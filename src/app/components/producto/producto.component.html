@@ -1,0 +1,18 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Productos</h2>
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let prod of productos">
+      <div class="card shadow-sm h-100 product-card">
+        <img [src]="prod.imagen" class="card-img-top" [alt]="prod.nombre">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ prod.nombre }}</h5>
+          <p class="card-text">{{ prod.descripcion }}</p>
+          <p class="card-text font-weight-bold">Precio: {{ prod.precio | currency:'EUR' }}</p>
+          <button class="btn btn-primary mt-auto" (click)="agregarAlCarrito(prod)">
+            <i class="bi bi-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
