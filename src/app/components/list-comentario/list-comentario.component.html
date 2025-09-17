@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <h5 class="mb-3">Comentarios</h5>
+
+  <div *ngIf="comentarios.length > 0; else noComentarios">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let comentario of comentarios">
+            <td>{{ comentario.id }}</td>
+            <td>{{ comentario.nombre }}</td>
+            <td>{{ comentario.email }}</td>
+            <td>{{ comentario.mensaje }}</td>
+            <td>{{ comentario.fechaCreacion | date:'dd/MM/yyyy' }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-sm btn-danger"
+                (click)="eliminarComentario(comentario.id!)"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #noComentarios>
+    <div class="alert alert-info" role="alert">
+      No hay comentarios aún.
+    </div>
+  </ng-template>
+</div>
