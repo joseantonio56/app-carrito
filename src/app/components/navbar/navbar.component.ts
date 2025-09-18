@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/service/carrito.service';
-
+import { ComentariosService } from 'src/app/service/comentario.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +9,27 @@ import { CarritoService } from 'src/app/service/carrito.service';
 })
 export class NavbarComponent implements OnInit {
 
-  cantidadTotal: number = 0;
+  cantidadTotal: number = 0; // carrito
+  cantidadComentarios: number = 0; // comentarios
 
-  constructor(private carritoService: CarritoService) { }
+  constructor(
+    private carritoService: CarritoService,
+    private comentariosService: ComentariosService
+  ) { }
 
   ngOnInit(): void {
-    // Nos suscribimos al observable para actualizar la cantidad en tiempo real
+    // Suscripción para carrito
     this.carritoService.cantidad$.subscribe(total => {
       this.cantidadTotal = total;
+    });
+
+    // Suscripción para comentarios
+    this.cargarCantidadComentarios();
+  }
+
+  cargarCantidadComentarios() {
+    this.comentariosService.obtenerComentarios().subscribe((comentarios: string | any[]) => {
+      this.cantidadComentarios = comentarios.length;
     });
   }
 }

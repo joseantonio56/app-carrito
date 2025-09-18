@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'carrito', component: CarritoComponent },
   {path:'comentarios',component:ComentariosComponent},
    { path: 'login', component: LoginComponent },
-  { path: 'list-comentarios', component: ListComentarioComponent, /*canActivate: [authGuard]*/ },
+  { path: 'list-comentarios', component: ListComentarioComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '/productos' } // para rutas desconocidas
 ];
 

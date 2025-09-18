@@ -31,10 +31,12 @@
           <span class="ml-1">Hacer Comentarios</span>
         </a>
       </li>
-       <li class="nav-item">
+      <li class="nav-item position-relative">
         <a class="nav-link d-flex align-items-center" routerLink="/login" routerLinkActive="active">
           <i class="bi bi-unlock2-fill"></i>
           <span class="ml-1">Ver Comentarios</span>
+          <span class="badge badge-pill badge-info position-absolute" 
+                style="top:0; right:-10px;" *ngIf="cantidadComentarios > 0">{{ cantidadComentarios }}</span>
         </a>
       </li>
     </ul>
